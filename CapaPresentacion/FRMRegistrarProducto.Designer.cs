@@ -1,0 +1,498 @@
+﻿namespace CapaPresentacion
+{
+    partial class FRMRegistrarProducto
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.labelR = new System.Windows.Forms.Label();
+            this.txtidproducto = new System.Windows.Forms.TextBox();
+            this.btnguardar = new System.Windows.Forms.Button();
+            this.Nombre = new System.Windows.Forms.Label();
+            this.txtcodigo = new System.Windows.Forms.TextBox();
+            this.rbtninactivo = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.rbtnactivo = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtnombre = new System.Windows.Forms.TextBox();
+            this.txtdescripcion = new System.Windows.Forms.TextBox();
+            this.txttalla = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtcolor = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtcomprado = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtvendido = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtstock = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtidcategoria = new System.Windows.Forms.TextBox();
+            this.label = new System.Windows.Forms.Label();
+            this.pictureCodigo = new System.Windows.Forms.PictureBox();
+            this.btndescargar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbProveedor = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCodigo)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // labelR
+            // 
+            this.labelR.AutoSize = true;
+            this.labelR.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelR.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelR.ForeColor = System.Drawing.Color.Black;
+            this.labelR.Location = new System.Drawing.Point(41, 33);
+            this.labelR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelR.Name = "labelR";
+            this.labelR.Size = new System.Drawing.Size(252, 32);
+            this.labelR.TabIndex = 22;
+            this.labelR.Text = "Agregue el Producto";
+            this.labelR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelR.Click += new System.EventHandler(this.labelR_Click);
+            // 
+            // txtidproducto
+            // 
+            this.txtidproducto.Enabled = false;
+            this.txtidproducto.Location = new System.Drawing.Point(174, 94);
+            this.txtidproducto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtidproducto.Name = "txtidproducto";
+            this.txtidproducto.Size = new System.Drawing.Size(116, 22);
+            this.txtidproducto.TabIndex = 30;
+            this.txtidproducto.Visible = false;
+            this.txtidproducto.TextChanged += new System.EventHandler(this.txtidcliente_TextChanged);
+            // 
+            // btnguardar
+            // 
+            this.btnguardar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnguardar.FlatAppearance.BorderSize = 0;
+            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnguardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnguardar.ForeColor = System.Drawing.Color.White;
+            this.btnguardar.Location = new System.Drawing.Point(507, 401);
+            this.btnguardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnguardar.Name = "btnguardar";
+            this.btnguardar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnguardar.Size = new System.Drawing.Size(130, 36);
+            this.btnguardar.TabIndex = 28;
+            this.btnguardar.Text = "&Guardar";
+            this.btnguardar.UseVisualStyleBackColor = false;
+            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSize = true;
+            this.Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nombre.ForeColor = System.Drawing.Color.Gray;
+            this.Nombre.Location = new System.Drawing.Point(46, 94);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Size = new System.Drawing.Size(65, 20);
+            this.Nombre.TabIndex = 18;
+            this.Nombre.Text = "Nombre";
+            this.Nombre.Click += new System.EventHandler(this.Nombre_Click);
+            // 
+            // txtcodigo
+            // 
+            this.txtcodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodigo.Location = new System.Drawing.Point(46, 181);
+            this.txtcodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtcodigo.Name = "txtcodigo";
+            this.txtcodigo.Size = new System.Drawing.Size(244, 24);
+            this.txtcodigo.TabIndex = 24;
+            this.txtcodigo.TextChanged += new System.EventHandler(this.txtapellidos_TextChanged);
+            // 
+            // rbtninactivo
+            // 
+            this.rbtninactivo.AutoSize = true;
+            this.rbtninactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtninactivo.ForeColor = System.Drawing.Color.DimGray;
+            this.rbtninactivo.Location = new System.Drawing.Point(593, 355);
+            this.rbtninactivo.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtninactivo.Name = "rbtninactivo";
+            this.rbtninactivo.Size = new System.Drawing.Size(76, 22);
+            this.rbtninactivo.TabIndex = 27;
+            this.rbtninactivo.TabStop = true;
+            this.rbtninactivo.Text = "Inactivo";
+            this.rbtninactivo.UseVisualStyleBackColor = true;
+            this.rbtninactivo.CheckedChanged += new System.EventHandler(this.rbtninactivo_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(46, 157);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Codigo";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btncancelar.FlatAppearance.BorderSize = 0;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.ForeColor = System.Drawing.Color.Black;
+            this.btncancelar.Location = new System.Drawing.Point(657, 401);
+            this.btncancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(130, 36);
+            this.btncancelar.TabIndex = 29;
+            this.btncancelar.Text = "&Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = false;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // rbtnactivo
+            // 
+            this.rbtnactivo.AutoSize = true;
+            this.rbtnactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnactivo.ForeColor = System.Drawing.Color.DimGray;
+            this.rbtnactivo.Location = new System.Drawing.Point(507, 355);
+            this.rbtnactivo.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnactivo.Name = "rbtnactivo";
+            this.rbtnactivo.Size = new System.Drawing.Size(66, 22);
+            this.rbtnactivo.TabIndex = 26;
+            this.rbtnactivo.TabStop = true;
+            this.rbtnactivo.Text = "Activo";
+            this.rbtnactivo.UseVisualStyleBackColor = true;
+            this.rbtnactivo.CheckedChanged += new System.EventHandler(this.rbtnactivo_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(502, 205);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 20);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Descripcion";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(502, 331);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 20);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Seleccione Estado";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // txtnombre
+            // 
+            this.txtnombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombre.Location = new System.Drawing.Point(46, 118);
+            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.Size = new System.Drawing.Size(244, 24);
+            this.txtnombre.TabIndex = 23;
+            this.txtnombre.TextChanged += new System.EventHandler(this.txtnombre_TextChanged);
+            // 
+            // txtdescripcion
+            // 
+            this.txtdescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdescripcion.Location = new System.Drawing.Point(507, 229);
+            this.txtdescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtdescripcion.Name = "txtdescripcion";
+            this.txtdescripcion.Size = new System.Drawing.Size(244, 24);
+            this.txtdescripcion.TabIndex = 31;
+            this.txtdescripcion.TextChanged += new System.EventHandler(this.txtdescripcion_TextChanged);
+            // 
+            // txttalla
+            // 
+            this.txttalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttalla.Location = new System.Drawing.Point(507, 300);
+            this.txttalla.Margin = new System.Windows.Forms.Padding(4);
+            this.txttalla.Name = "txttalla";
+            this.txttalla.Size = new System.Drawing.Size(244, 24);
+            this.txttalla.TabIndex = 33;
+            this.txttalla.TextChanged += new System.EventHandler(this.txttalla_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(502, 276);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 20);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Talla";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtcolor
+            // 
+            this.txtcolor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcolor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcolor.Location = new System.Drawing.Point(46, 294);
+            this.txtcolor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtcolor.Name = "txtcolor";
+            this.txtcolor.Size = new System.Drawing.Size(244, 24);
+            this.txtcolor.TabIndex = 35;
+            this.txtcolor.TextChanged += new System.EventHandler(this.txtcolor_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(43, 270);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 20);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Color";
+            // 
+            // txtcomprado
+            // 
+            this.txtcomprado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcomprado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcomprado.Location = new System.Drawing.Point(46, 362);
+            this.txtcomprado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtcomprado.Name = "txtcomprado";
+            this.txtcomprado.Size = new System.Drawing.Size(244, 24);
+            this.txtcomprado.TabIndex = 37;
+            this.txtcomprado.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(43, 338);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Costo";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // txtvendido
+            // 
+            this.txtvendido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtvendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtvendido.Location = new System.Drawing.Point(507, 47);
+            this.txtvendido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtvendido.Name = "txtvendido";
+            this.txtvendido.Size = new System.Drawing.Size(244, 24);
+            this.txtvendido.TabIndex = 39;
+            this.txtvendido.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Gray;
+            this.label7.Location = new System.Drawing.Point(502, 23);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(118, 20);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Precio de venta";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // txtstock
+            // 
+            this.txtstock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtstock.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtstock.Location = new System.Drawing.Point(507, 106);
+            this.txtstock.Margin = new System.Windows.Forms.Padding(4);
+            this.txtstock.Name = "txtstock";
+            this.txtstock.Size = new System.Drawing.Size(244, 24);
+            this.txtstock.TabIndex = 41;
+            this.txtstock.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Gray;
+            this.label8.Location = new System.Drawing.Point(502, 82);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 20);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Stock";
+            // 
+            // txtidcategoria
+            // 
+            this.txtidcategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtidcategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtidcategoria.Location = new System.Drawing.Point(507, 171);
+            this.txtidcategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.txtidcategoria.Name = "txtidcategoria";
+            this.txtidcategoria.Size = new System.Drawing.Size(244, 24);
+            this.txtidcategoria.TabIndex = 43;
+            this.txtidcategoria.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.Color.Gray;
+            this.label.Location = new System.Drawing.Point(502, 147);
+            this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(78, 20);
+            this.label.TabIndex = 42;
+            this.label.Text = "Categoria";
+            this.label.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // pictureCodigo
+            // 
+            this.pictureCodigo.Location = new System.Drawing.Point(46, 212);
+            this.pictureCodigo.Name = "pictureCodigo";
+            this.pictureCodigo.Size = new System.Drawing.Size(243, 55);
+            this.pictureCodigo.TabIndex = 44;
+            this.pictureCodigo.TabStop = false;
+            this.pictureCodigo.Click += new System.EventHandler(this.pictureCodigo_Click);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.Location = new System.Drawing.Point(296, 220);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(40, 42);
+            this.btndescargar.TabIndex = 45;
+            this.btndescargar.Text = "⤓";
+            this.btndescargar.UseVisualStyleBackColor = true;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click_1);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(45, 398);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 20);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "Proveedor";
+            // 
+            // cmbProveedor
+            // 
+            this.cmbProveedor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProveedor.FormattingEnabled = true;
+            this.cmbProveedor.Location = new System.Drawing.Point(46, 421);
+            this.cmbProveedor.Name = "cmbProveedor";
+            this.cmbProveedor.Size = new System.Drawing.Size(243, 28);
+            this.cmbProveedor.TabIndex = 47;
+            this.cmbProveedor.SelectedIndexChanged += new System.EventHandler(this.cmbProveedor_SelectedIndexChanged);
+            // 
+            // FRMRegistrarProducto
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(816, 479);
+            this.Controls.Add(this.cmbProveedor);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btndescargar);
+            this.Controls.Add(this.pictureCodigo);
+            this.Controls.Add(this.txtidcategoria);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.txtstock);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtvendido);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtcomprado);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtcolor);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txttalla);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtdescripcion);
+            this.Controls.Add(this.labelR);
+            this.Controls.Add(this.txtidproducto);
+            this.Controls.Add(this.btnguardar);
+            this.Controls.Add(this.txtnombre);
+            this.Controls.Add(this.Nombre);
+            this.Controls.Add(this.txtcodigo);
+            this.Controls.Add(this.rbtninactivo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.rbtnactivo);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "FRMRegistrarProducto";
+            this.Text = "FRMRegistrarProducto";
+            this.Load += new System.EventHandler(this.FRMRegistrarProducto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCodigo)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label labelR;
+        public System.Windows.Forms.TextBox txtidproducto;
+        private System.Windows.Forms.Button btnguardar;
+        private System.Windows.Forms.Label Nombre;
+        public System.Windows.Forms.TextBox txtcodigo;
+        public System.Windows.Forms.RadioButton rbtninactivo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btncancelar;
+        public System.Windows.Forms.RadioButton rbtnactivo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox txtnombre;
+        public System.Windows.Forms.TextBox txtdescripcion;
+        public System.Windows.Forms.TextBox txttalla;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtcolor;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox txtcomprado;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtvendido;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox txtstock;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox txtidcategoria;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.PictureBox pictureCodigo;
+        private System.Windows.Forms.Button btndescargar;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbProveedor;
+    }
+}
