@@ -53,7 +53,7 @@ namespace CapaDatos
             return resul;
         }
 
-        // Retorna el idcompra generado (int) o -1 si falló
+        // 
         public int Guardar(CDCompra comp)
         {
             int idGenerado = -1;
@@ -186,25 +186,6 @@ namespace CapaDatos
             return resul;
         }
 
-        public DataTable BuscarPorId(int idcompra)
-        {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection con = new SqlConnection(Conexion.Conn))
-            {
-                con.Open();
-
-                SqlCommand cmd = new SqlCommand("sp_buscar_compra_por_id", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@idcompra", idcompra);
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-            }
-
-            return dt;
-        }
 
     }
 

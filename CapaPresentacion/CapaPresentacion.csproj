@@ -74,12 +74,6 @@
     <Compile Include="FRMBitacora.Designer.cs">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRMCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FRMCompra.Designer.cs">
-      <DependentUpon>FRMCompra.cs</DependentUpon>
-    </Compile>
     <Compile Include="FRMEditarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +121,12 @@
     </Compile>
     <Compile Include="FRMProveedor.Designer.cs">
       <DependentUpon>FRMProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRealizarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRealizarCompra.Designer.cs">
+      <DependentUpon>FrmRealizarCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="FRMRegistrarCliente.cs">
       <SubType>Form</SubType>
@@ -182,9 +182,6 @@
     <EmbeddedResource Include="FRMBitacora.resx">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRMCompra.resx">
-      <DependentUpon>FRMCompra.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FRMEditarCliente.resx">
       <DependentUpon>FRMEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRMProveedor.resx">
       <DependentUpon>FRMProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRealizarCompra.resx">
+      <DependentUpon>FrmRealizarCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMRegistrarCliente.resx">
       <DependentUpon>FRMRegistrarCliente.cs</DependentUpon>

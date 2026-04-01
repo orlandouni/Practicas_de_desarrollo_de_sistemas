@@ -1,37 +1,51 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using CapaDatos;
 
 namespace CapaNegocio
 {
-
-    public class DetalleCompra
-    {
-        public int IdCompra { get; set; }
-        public int IdProducto { get; set; }
-        public int Cantidad { get; set; }
-        public decimal Precio { get; set; }
-        public decimal Total { get; set; }
-    }
     public class CNDetalleCompra
     {
-        public static string Guardar(DetalleCompra det)
+        public class DetalleCompra
         {
-            CDDetalleCompra datos = new CDDetalleCompra
-            {
-                IdCompra = det.IdCompra,
-                IdProducto = det.IdProducto,
-                Cantidad = det.Cantidad,
-                Precio = det.Precio,
-                Total = det.Total
-            };
-
-            return datos.Guardar(datos);
+            public int idcompra { get; set; }
+            public int idproducto { get; set; }
+            public int cantidad { get; set; }
+            public decimal precio { get; set; }
+            public decimal total { get; set; }
         }
 
-        public static DataTable Listar(int idcompra)
+        // Guarda todos los detalles de una compra (lista)
+        public static string GuardarDetalles(System.Collections.Generic.List<DetalleCompra> detalles)
         {
             CDDetalleCompra datos = new CDDetalleCompra();
-            return datos.Listar(idcompra);
+            foreach (var d in detalles)
+            {
+                string r = datos.Guardar(new CDDetalleCompra
+                {
+                    idcompra = d.idcompra,
+                    idproducto = d.idproducto,
+                    cantidad = d.cantidad,
+                    precio = d.precio,
+                    total = d.total
+                });
+                if (r != "OK") return r; // detiene si hay error
+            }
+            return "OK";
+        }
+
+        // Productos disponibles según proveedor seleccionado
+        public static DataTable ProductosPorProveedor(int idproveedor)
+        {
+            CDDetalleCompra datos = new CDDetalleCompra();
+            return datos.ObtenerPorProveedor(idproveedor);
+        }
+
+        // Lista de proveedores para el combo
+        public static DataTable ListarProveedores()
+        {
+            CDProveedor datos = new CDProveedor();
+            return datos.Listar();
         }
     }
 }

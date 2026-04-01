@@ -30,8 +30,8 @@ namespace CapaPresentacion
 
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-            FRMCompra compra = new FRMCompra();
-            compra.Show();
+            FrmRealizarCompra frm = new FrmRealizarCompra();
+            frm.ShowDialog();
         }
 
         private void ListadoCompra_Load(object sender, EventArgs e)
@@ -101,6 +101,26 @@ namespace CapaPresentacion
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+
+        public void Buscar()
+        {
+            this.dlistado.DataSource = CNCompra.Buscar(txtbuscar.Text);
         }
     }
 }

@@ -337,7 +337,7 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(78, 55);
             this.label17.TabIndex = 27;
-            this.label17.Text = "📊";
+            this.label17.Text = "🏠";
             this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18

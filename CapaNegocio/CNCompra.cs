@@ -82,18 +82,12 @@ namespace CapaNegocio
             return Datos.Eliminar(Datos);
         }
 
-        public static DataTable BuscarNombre(string textobuscar)
+        public static DataTable Buscar(string textob)
         {
-            CDProducto Datos = new CDProducto();
-            Datos.BuscarTexto = textobuscar;
-
-            return Datos.BuscarNombre(Datos);
+            CDCompra Datos = new CDCompra();
+            return Datos.Buscar(textob);
         }
 
-        public static DataTable BuscarPorId(int idcompra)
-        {
-            CDCompra datos = new CDCompra();
-            return datos.BuscarPorId(idcompra);
-        }
+
     }
 }

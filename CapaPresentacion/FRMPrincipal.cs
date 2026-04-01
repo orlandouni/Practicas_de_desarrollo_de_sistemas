@@ -19,7 +19,7 @@ namespace CapaPresentacion
         private string _colorActual = "";
         private decimal _precioActual = 0;
         private int _stockActual = 0;
-        private readonly string SERIE_CAJA = "F001"; // se configura una vez
+        private readonly string SERIE_CAJA = "F001";
 
         // ─── Usuario logueado ────────────────────────────────────────
         private int idUsuarioActual = 0;
@@ -44,21 +44,14 @@ namespace CapaPresentacion
             LimpiarPanelProducto();
             EstilizarDGV();
 
-            // Items del combo tipo documento
             cmbTipoDocumento.Items.Clear();
             cmbTipoDocumento.Items.Add("Boleta");
             cmbTipoDocumento.Items.Add("Factura");
             cmbTipoDocumento.SelectedIndex = 0;
 
-            // Mostrar el usuario conectado
             lblUsuarioConectado.Text = $"Usuario: {CNSesion.Usuario}";
-
-            // Foco en el código al abrir
             txtCodigo.Focus();
 
-
-
-            // Notificaciones
             this.Controls.Add(pnlNotificaciones);
             pnlNotificaciones.BringToFront();
             lblNotificaciones.Cursor = Cursors.Hand;
@@ -69,7 +62,6 @@ namespace CapaPresentacion
             pnlNotificaciones.BackColor = Color.White;
             pnlNotificaciones.BorderStyle = BorderStyle.FixedSingle;
 
-            // Cerrar panel si se hace clic fuera
             this.Click += (s, ev) =>
             {
                 if (pnlNotificaciones.Visible)
@@ -103,10 +95,8 @@ namespace CapaPresentacion
             dgvCarrito.ReadOnly = true;
             dgvCarrito.RowHeadersVisible = false;
 
-            // Ocultar columna técnica
             dgvCarrito.Columns["idproducto"].Visible = false;
 
-            // Cabeceras
             dgvCarrito.Columns["nombre"].HeaderText = "Producto";
             dgvCarrito.Columns["talla"].HeaderText = "Talla";
             dgvCarrito.Columns["color"].HeaderText = "Color";
@@ -123,9 +113,22 @@ namespace CapaPresentacion
             try
             {
                 DataTable dt = CNPrincipal.ListarClientes();
+
+                // Agregar columna nombreCompleto concatenando nombre + apellidos
+                dt.Columns.Add("nombreCompleto", typeof(string));
+                foreach (DataRow row in dt.Rows)
+                    row["nombreCompleto"] = $"{row["nombre"]} {row["apellidos"]}".Trim();
+
+                // Agregar fila "Sin cliente" al inicio
+                DataRow filaNula = dt.NewRow();
+                filaNula["idcliente"] = DBNull.Value;
+                filaNula["nombreCompleto"] = "— Sin cliente —";
+                dt.Rows.InsertAt(filaNula, 0);
+
                 cmbCliente.DataSource = dt;
                 cmbCliente.DisplayMember = "nombreCompleto";
                 cmbCliente.ValueMember = "idcliente";
+                cmbCliente.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -182,7 +185,6 @@ namespace CapaPresentacion
 
                 DataRow row = dt.Rows[0];
 
-                // Guardar datos en variables privadas
                 _idProductoActual = Convert.ToInt32(row["idproducto"]);
                 _nombreActual = row["nombre"].ToString();
                 _tallaActual = row["talla"].ToString();
@@ -190,7 +192,6 @@ namespace CapaPresentacion
                 _precioActual = Convert.ToDecimal(row["precio_venta"]);
                 _stockActual = Convert.ToInt32(row["stock"]);
 
-                // Mostrar en labels del groupBox1
                 lblNombreProducto.Text = _nombreActual;
                 lblTallaColor.Text = $"Talla: {_tallaActual}   |   Color: {_colorActual}";
                 lblPrecioProducto.Text = _precioActual.ToString("C");
@@ -204,7 +205,6 @@ namespace CapaPresentacion
                 nudCantidad.Value = 1;
                 btnAgregar.Enabled = _stockActual > 0;
 
-                // Foco en cantidad para agilizar
                 nudCantidad.Focus();
             }
             catch (Exception ex)
@@ -241,10 +241,9 @@ namespace CapaPresentacion
         {
             try
             {
-                // Obtiene el último número de esta serie y le suma 1
                 DataTable dt = CNPrincipal.ObtenerUltimoNumDoc(SERIE_CAJA);
                 int ultimo = dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0][0]) : 0;
-                return (ultimo + 1).ToString("D8"); // ej: 00000001, 00000002...
+                return (ultimo + 1).ToString("D8");
             }
             catch
             {
@@ -292,7 +291,7 @@ namespace CapaPresentacion
 
             dgvCarrito.Refresh();
             ActualizarTotales();
-            LimpiarPanelProducto(); // listo para el siguiente escaneo
+            LimpiarPanelProducto();
         }
 
         // ════════════════════════════════════════════════════════════
@@ -325,13 +324,6 @@ namespace CapaPresentacion
                 return;
             }
 
-            if (cmbCliente.SelectedValue == null)
-            {
-                MessageBox.Show("Selecciona un cliente.",
-                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             decimal subtotal = 0;
             foreach (DataRow row in dtCarrito.Rows)
                 subtotal += Convert.ToDecimal(row["total"]);
@@ -349,13 +341,17 @@ namespace CapaPresentacion
 
             try
             {
-                // Serie y número se generan automático
                 string serie = SERIE_CAJA;
                 string numDoc = GenerarNumDocumento();
 
+                // Cliente opcional: 0 = sin cliente → se manda NULL a la BD
+                int idCliente = (cmbCliente.SelectedValue == null || cmbCliente.SelectedValue == DBNull.Value)
+                    ? 0
+                    : Convert.ToInt32(cmbCliente.SelectedValue);
+
                 int idVenta = CNPrincipal.RegistrarVenta(
                     idUsuarioActual,
-                    Convert.ToInt32(cmbCliente.SelectedValue),
+                    idCliente,
                     serie,
                     numDoc,
                     cmbTipoDocumento.Text,
@@ -397,7 +393,7 @@ namespace CapaPresentacion
             lblIVA.Text = "IVA 16%:  $0.00";
             lblTotal.Text = "Total:    $0.00";
             btnCobrar.Text = "Cobrar";
-           
+            cmbCliente.SelectedIndex = 0; // vuelve a "— Sin cliente —"
             LimpiarPanelProducto();
         }
 
@@ -419,6 +415,7 @@ namespace CapaPresentacion
             }
             catch { }
         }
+
         // ════════════════════════════════════════════════════════════
         // BADGE DEL ÍCONO DE NOTIFICACIONES
         // ════════════════════════════════════════════════════════════
@@ -427,7 +424,7 @@ namespace CapaPresentacion
             int total = _notificaciones.Count;
             lblNotificaciones.Text = total > 0 ? $"🔔 {total}" : "🔔";
             lblNotificaciones.ForeColor = total > 0
-                ? Color.FromArgb(255, 220, 50)   // amarillo si hay alertas
+                ? Color.FromArgb(255, 220, 50)
                 : Color.White;
         }
 
@@ -442,7 +439,6 @@ namespace CapaPresentacion
                 return;
             }
 
-            // Posicionar justo debajo del label
             Point pos = panel2.PointToScreen(lblNotificaciones.Location);
             Point relativo = this.PointToClient(pos);
             pnlNotificaciones.Location = new Point(
@@ -463,7 +459,6 @@ namespace CapaPresentacion
             pnlNotificaciones.BackColor = Color.White;
             pnlNotificaciones.Padding = new Padding(0);
 
-            // ── Encabezado ──────────────────────────────────────────
             Panel header = new Panel
             {
                 Dock = DockStyle.Top,
@@ -494,13 +489,12 @@ namespace CapaPresentacion
                 Cursor = Cursors.Hand
             };
             btnCerrar.FlatAppearance.BorderSize = 0;
-            btnCerrar.Click += (s, e) => pnlNotificaciones.Visible = false;
+            btnCerrar.Click += (s, ev) => pnlNotificaciones.Visible = false;
 
             header.Controls.Add(titulo);
             header.Controls.Add(btnCerrar);
             pnlNotificaciones.Controls.Add(header);
 
-            // ── Sin notificaciones ───────────────────────────────────
             if (_notificaciones.Count == 0)
             {
                 Label vacio = new Label
@@ -516,7 +510,6 @@ namespace CapaPresentacion
                 return;
             }
 
-            // ── Lista de notificaciones ──────────────────────────────
             FlowLayoutPanel lista = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -538,22 +531,21 @@ namespace CapaPresentacion
                     Cursor = Cursors.Default
                 };
 
-                // Ícono de advertencia
                 Label icono = new Label
                 {
                     Text = "⚠",
                     ForeColor = Color.FromArgb(180, 120, 0),
                     Font = new Font("Segoe UI", 13f),
                     Location = new Point(8, 12),
-                    Size = new Size(24, 24) // 👈 tamaño fijo
+                    Size = new Size(24, 24)
                 };
-                // Texto
+
                 Label texto = new Label
                 {
                     Text = notif,
                     ForeColor = Color.FromArgb(26, 58, 110),
                     Font = new Font("Segoe UI", 8.5f),
-                    Location = new Point(40, 6), // 👈 más espacio
+                    Location = new Point(40, 6),
                     Size = new Size(item.Width - 50, 36),
                     TextAlign = ContentAlignment.MiddleLeft
                 };
@@ -563,7 +555,6 @@ namespace CapaPresentacion
                 lista.Controls.Add(item);
             }
 
-            // ── Botón limpiar ────────────────────────────────────────
             Button btnLimpiar = new Button
             {
                 Text = "Limpiar notificaciones",
@@ -577,24 +568,23 @@ namespace CapaPresentacion
             };
             btnLimpiar.FlatAppearance.BorderSize = 0;
             btnLimpiar.FlatAppearance.BorderColor = Color.FromArgb(200, 216, 245);
-            btnLimpiar.Click += (s, e) =>
+            btnLimpiar.Click += (s, ev) =>
             {
                 _notificaciones.Clear();
                 ActualizarBadge();
                 pnlNotificaciones.Visible = false;
             };
 
-            pnlNotificaciones.Controls.Add(btnLimpiar); // primero bottom
-            pnlNotificaciones.Controls.Add(lista);      // luego fill
-            pnlNotificaciones.Controls.Add(header);     // al final top
+            pnlNotificaciones.Controls.Add(btnLimpiar);
+            pnlNotificaciones.Controls.Add(lista);
+            pnlNotificaciones.Controls.Add(header);
         }
 
         // ════════════════════════════════════════════════════════════
-        // Hcer bonit DGV
+        // ESTILIZAR DGV
         // ════════════════════════════════════════════════════════════
         private void EstilizarDGV()
         {
-            // ─── Sin bordes ni líneas ────────────────────────────────────
             dgvCarrito.BorderStyle = BorderStyle.None;
             dgvCarrito.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvCarrito.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -602,7 +592,6 @@ namespace CapaPresentacion
             dgvCarrito.GridColor = Color.White;
             dgvCarrito.ScrollBars = ScrollBars.Vertical;
 
-            // ─── Fondo ──────────────────────────────────────────────────
             dgvCarrito.BackgroundColor = Color.White;
             dgvCarrito.DefaultCellStyle.BackColor = Color.White;
             dgvCarrito.DefaultCellStyle.ForeColor = Color.FromArgb(26, 58, 110);
@@ -611,13 +600,11 @@ namespace CapaPresentacion
             dgvCarrito.DefaultCellStyle.SelectionForeColor = Color.FromArgb(26, 58, 110);
             dgvCarrito.DefaultCellStyle.Padding = new Padding(4, 6, 4, 6);
 
-            // ─── Filas alternas ──────────────────────────────────────────
             dgvCarrito.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 248, 255);
             dgvCarrito.AlternatingRowsDefaultCellStyle.ForeColor = Color.FromArgb(26, 58, 110);
             dgvCarrito.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(232, 240, 254);
             dgvCarrito.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(26, 58, 110);
 
-            // ─── Cabecera ────────────────────────────────────────────────
             dgvCarrito.EnableHeadersVisualStyles = false;
             dgvCarrito.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             dgvCarrito.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(26, 58, 110);
@@ -628,42 +615,35 @@ namespace CapaPresentacion
             dgvCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvCarrito.Columns["precio"].HeaderText = "$";
 
-            // ─── Filas ───────────────────────────────────────────────────
             dgvCarrito.RowTemplate.Height = 34;
             dgvCarrito.RowTemplate.DefaultCellStyle.Padding = new Padding(4, 0, 4, 0);
         }
 
-    // ─── Comportamiento ───────────────────────
-
-            // ════════════════════════════════════════════════════════════
-            // EVENTOS VACÍOS QUE EL DESIGNER YA REGISTRÓ
-            // ════════════════════════════════════════════════════════════
+        // ════════════════════════════════════════════════════════════
+        // EVENTOS VACÍOS QUE EL DESIGNER YA REGISTRÓ
+        // ════════════════════════════════════════════════════════════
         private void panel2_Paint(object sender, System.Windows.Forms.PaintEventArgs e) { }
         private void splitContainer1_Panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e) { }
         private void splitContainer1_Panel2_Paint(object sender, System.Windows.Forms.PaintEventArgs e) { }
         private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e) { }
         private void txtSerie_TextChanged(object sender, EventArgs e) { }
         private void dgvCarrito_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e) { }
-        private void btnMenuHam_Click(object sender, EventArgs e) {
+        private void btnMenuHam_Click(object sender, EventArgs e)
+        {
             FRMMenu frm = new FRMMenu();
-            
             frm.Show();
             this.Hide();
         }
+        private void lblSubtotal_Click(object sender, EventArgs e) { }
+        private void panel7_Paint(object sender, PaintEventArgs e) { }
+        private void lblUsuarioConectado_Click(object sender, EventArgs e) { }
 
-        private void lblSubtotal_Click(object sender, EventArgs e)
+        private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblUsuarioConectado_Click(object sender, EventArgs e)
-        {
-
+            FRMRegistrarCliente frm = new FRMRegistrarCliente();
+            frm.Insert = true;
+            frm.ShowDialog(); // lo abrimos como diálogo modal
+            CargarClientes();  // al cerrar, recarga el combo automáticamente
         }
     }
 }
