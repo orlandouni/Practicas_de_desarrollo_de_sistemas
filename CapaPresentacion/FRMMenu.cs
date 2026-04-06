@@ -31,7 +31,10 @@ namespace CapaPresentacion
 
         private void FRMMenu_Load(object sender, EventArgs e)
         {
-
+            bool esAdmin = CNSesion.Rol?.ToUpper() == "ADMIN";
+            label23.Visible = esAdmin;
+            label24.Visible = esAdmin;
+            button3.Visible = esAdmin;
         }
 
 
@@ -211,6 +214,29 @@ namespace CapaPresentacion
         {
             FRMListadoCompra form = new FRMListadoCompra();
             form.Show();
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+            FRMBackup form = new FRMBackup();
+            form.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FRMBackup form = new FRMBackup();
+            form.Show();
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -60,6 +60,9 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnReportes
@@ -121,7 +124,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(110)))));
             this.label3.Location = new System.Drawing.Point(212, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 55);
+            this.label3.Size = new System.Drawing.Size(69, 55);
             this.label3.TabIndex = 5;
             this.label3.Text = "👤";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -134,7 +137,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(110)))));
             this.label4.Location = new System.Drawing.Point(61, 214);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 55);
+            this.label4.Size = new System.Drawing.Size(75, 55);
             this.label4.TabIndex = 6;
             this.label4.Text = "📊";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -204,7 +207,7 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(110)))));
             this.label8.Location = new System.Drawing.Point(520, 84);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 55);
+            this.label8.Size = new System.Drawing.Size(76, 55);
             this.label8.TabIndex = 15;
             this.label8.Text = "👨‍🔧";
             this.label8.Click += new System.EventHandler(this.label8_Click);
@@ -290,7 +293,7 @@
             this.label14.ForeColor = System.Drawing.Color.Crimson;
             this.label14.Location = new System.Drawing.Point(672, 332);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 55);
+            this.label14.Size = new System.Drawing.Size(67, 55);
             this.label14.TabIndex = 23;
             this.label14.Text = "🚪";
             this.label14.Click += new System.EventHandler(this.label14_Click);
@@ -335,7 +338,7 @@
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(110)))));
             this.label17.Location = new System.Drawing.Point(61, 84);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 55);
+            this.label17.Size = new System.Drawing.Size(72, 55);
             this.label17.TabIndex = 27;
             this.label17.Text = "🏠";
             this.label17.Click += new System.EventHandler(this.label17_Click);
@@ -413,11 +416,49 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.Location = new System.Drawing.Point(340, 202);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(129, 102);
+            this.button3.TabIndex = 32;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(371, 269);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(65, 21);
+            this.label23.TabIndex = 33;
+            this.label23.Text = "BackUp";
+            this.label23.Click += new System.EventHandler(this.label23_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(110)))));
+            this.label24.Location = new System.Drawing.Point(365, 214);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(75, 55);
+            this.label24.TabIndex = 34;
+            this.label24.Text = "💾";
+            // 
             // FRMMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label22);
@@ -494,5 +535,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
     }
 }

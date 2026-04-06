@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CNBackup.cs" />
     <Compile Include="CNBitacora.cs" />
     <Compile Include="CNCliente.cs" />
     <Compile Include="CNCompra.cs" />

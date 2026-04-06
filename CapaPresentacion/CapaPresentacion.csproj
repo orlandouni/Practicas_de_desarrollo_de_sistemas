@@ -68,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="FRMbackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMbackup.Designer.cs">
+      <DependentUpon>FRMbackup.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMBitacora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FRMbackup.resx">
+      <DependentUpon>FRMbackup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMBitacora.resx">
       <DependentUpon>FRMBitacora.cs</DependentUpon>
     </EmbeddedResource>
