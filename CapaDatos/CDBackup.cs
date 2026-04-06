@@ -12,7 +12,6 @@ namespace CapaDatos
         /// </summary>
         public string RealizarBackup(string carpetaDestino)
         {
-            // Obtiene el nombre de la BD desde el connection string
             var builder = new SqlConnectionStringBuilder(Conexion.Conn);
             string nombreBD = builder.InitialCatalog;
 
@@ -34,11 +33,67 @@ namespace CapaDatos
             using (SqlCommand cmd = new SqlCommand(sql, con))
             {
                 con.Open();
-                cmd.CommandTimeout = 300; // 5 minutos
+                cmd.CommandTimeout = 300;
                 cmd.ExecuteNonQuery();
             }
 
             return rutaCompleta;
+        }
+
+        /// <summary>
+        /// Restaura la BD desde un archivo .bak.
+        /// Cierra conexiones activas antes de restaurar (modo SINGLE_USER).
+        /// </summary>
+        public void RestaurarBackup(string rutaArchivoBak)
+        {
+            if (!File.Exists(rutaArchivoBak))
+                throw new FileNotFoundException("No se encontró el archivo de respaldo.", rutaArchivoBak);
+
+            var builder = new SqlConnectionStringBuilder(Conexion.Conn);
+            string nombreBD = builder.InitialCatalog;
+
+            // Conectar a master para poder cerrar la BD de destino
+            var masterBuilder = new SqlConnectionStringBuilder(Conexion.Conn);
+            masterBuilder.InitialCatalog = "master";
+
+            // 1. Poner en modo SINGLE_USER para desconectar usuarios activos
+            string sqlSingleUser = $@"
+                ALTER DATABASE [{nombreBD}]
+                SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
+
+            // 2. Restaurar
+            string sqlRestore = $@"
+                RESTORE DATABASE [{nombreBD}]
+                FROM DISK = N'{rutaArchivoBak}'
+                WITH REPLACE, RECOVERY;";
+
+            // 3. Volver a MULTI_USER
+            string sqlMultiUser = $@"
+                ALTER DATABASE [{nombreBD}]
+                SET MULTI_USER;";
+
+            using (SqlConnection con = new SqlConnection(masterBuilder.ConnectionString))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(sqlSingleUser, con))
+                {
+                    cmd.CommandTimeout = 60;
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(sqlRestore, con))
+                {
+                    cmd.CommandTimeout = 600; // 10 minutos
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(sqlMultiUser, con))
+                {
+                    cmd.CommandTimeout = 60;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
