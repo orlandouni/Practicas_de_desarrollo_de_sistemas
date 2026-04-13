@@ -1,11 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -17,27 +12,49 @@ namespace CapaDatos
         public string rol { get; set; }
         public string estado { get; set; }
         public int idempleado { get; set; }
+        public string Buscar { get; set; }
 
-        public string Guardar(CDUsuario cli)
+        public DataTable Listar()
         {
-            string resul = "";
+            DataTable resul = new DataTable("usuario");
             SqlConnection conexion = new SqlConnection();
 
             try
             {
                 conexion.ConnectionString = Conexion.Conn;
+                SqlCommand cmd = new SqlCommand("splistar_usuarios", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                SqlDataAdapter sqldat = new SqlDataAdapter(cmd);
+                sqldat.Fill(resul);
+            }
+            catch (Exception ex)
+            {
+                resul = null;
+            }
+            return resul;
+        }
+
+
+        public string Guardar(CDUsuario cli)
+        {
+            string resul = "";
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
                 conexion.Open();
+                SqlCommand cmd = new SqlCommand("spguardar_usuario", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlCommand Cmd = new SqlCommand("spguardar_usuario", conexion);
-                Cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@usuario", cli.usuario);
+                cmd.Parameters.AddWithValue("@pass", cli.pass);
+                cmd.Parameters.AddWithValue("@rol", cli.rol);
+                cmd.Parameters.AddWithValue("@estado", cli.estado);
+                cmd.Parameters.AddWithValue("@idempleado", cli.idempleado);
 
-                Cmd.Parameters.AddWithValue("@usuario", cli.usuario);
-                Cmd.Parameters.AddWithValue("@pass", cli.pass);
-                Cmd.Parameters.AddWithValue("@rol", cli.rol);
-                Cmd.Parameters.AddWithValue("@estado", cli.estado);
-                Cmd.Parameters.AddWithValue("@idempleado", cli.idempleado);
-
-                resul = Cmd.ExecuteNonQuery() > 0 ? "OK" : "No se pudo insertar el registro";
+                resul = cmd.ExecuteNonQuery() > 0 ? "OK" : "No se pudo insertar el registro";
             }
             catch (Exception ex)
             {
@@ -45,23 +62,78 @@ namespace CapaDatos
             }
             finally
             {
-                if (conexion.State == ConnectionState.Open)
-                    conexion.Close();
+                if (conexion.State == ConnectionState.Open) conexion.Close();
             }
             return resul;
         }
+
+        public string Editar(CDUsuario cli)
+        {
+            string res = "";
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("speditar_usuario", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@idusuario", cli.idusuario);
+                cmd.Parameters.AddWithValue("@usuario", cli.usuario);
+                cmd.Parameters.AddWithValue("@pass", cli.pass);
+                cmd.Parameters.AddWithValue("@rol", cli.rol);
+                cmd.Parameters.AddWithValue("@estado", cli.estado);
+                cmd.Parameters.AddWithValue("@idempleado", cli.idempleado);
+
+                res = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se editaron los datos";
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return res;
+        }
+
+        public string Eliminar(CDUsuario usu)
+        {
+            string res = "";
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("speliminar_usuario", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@idusuario", usu.idusuario);
+
+                res = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se eliminaron los datos";
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return res;
+        }
+
         public CDUsuario ObtenerPorUsuario(string nombreUsuario)
         {
             using (SqlConnection conexion = new SqlConnection(Conexion.Conn))
             {
                 conexion.Open();
-
                 SqlCommand cmd = new SqlCommand("spvalidar_Usuario", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@usuario", nombreUsuario);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
                 if (reader.Read())
                 {
                     return new CDUsuario
@@ -78,6 +150,48 @@ namespace CapaDatos
             }
         }
 
+        public DataTable BuscarNombre(CDUsuario usu)
+        {
+            DataTable resul = new DataTable("usuario");
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                SqlCommand cmd = new SqlCommand("spbuscar_usuario_nombre", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@nombre", usu.Buscar);
+
+                SqlDataAdapter sqldat = new SqlDataAdapter(cmd);
+                sqldat.Fill(resul);
+            }
+            catch (Exception ex)
+            {
+                resul = null;
+            }
+            return resul;
+        }
+
+        public DataTable BuscarNombreUsuario(CDUsuario usu)
+        {
+            DataTable resul = new DataTable("usuario");
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion.ConnectionString = Conexion.Conn;
+                SqlCommand cmd = new SqlCommand("spbuscar_usuario_nombre_usuario", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@nombreusuario", usu.Buscar);
+
+                SqlDataAdapter sqldat = new SqlDataAdapter(cmd);
+                sqldat.Fill(resul);
+            }
+            catch (Exception ex)
+            {
+                resul = null;
+            }
+            return resul;
+        }
     }
 }

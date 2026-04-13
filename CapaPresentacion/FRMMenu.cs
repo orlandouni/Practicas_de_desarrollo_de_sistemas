@@ -238,5 +238,11 @@ namespace CapaPresentacion
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FRMListadoUsuario frm = new FRMListadoUsuario();
+                frm.Show();
+        }
     }
 }

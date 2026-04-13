@@ -104,6 +104,12 @@
     <Compile Include="FRMListadoProducto.Designer.cs">
       <DependentUpon>FRMListadoProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMListadoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMListadoUsuario.Designer.cs">
+      <DependentUpon>FRMListadoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,12 @@
     <Compile Include="FRMRegistrarProveedor.Designer.cs">
       <DependentUpon>FRMRegistrarProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRMRegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMRegistrarUsuario.Designer.cs">
+      <DependentUpon>FRMRegistrarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMRegstrarEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,12 @@
     </Compile>
     <Compile Include="FRMListadoCompra.Designer.cs">
       <DependentUpon>FRMListadoCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMVistaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMVistaEmpleado.Designer.cs">
+      <DependentUpon>FRMVistaEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -203,6 +221,9 @@
     <EmbeddedResource Include="FRMListadoProducto.resx">
       <DependentUpon>FRMListadoProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMListadoUsuario.resx">
+      <DependentUpon>FRMListadoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMLogin.resx">
       <DependentUpon>FRMLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +248,9 @@
     <EmbeddedResource Include="FRMRegistrarProveedor.resx">
       <DependentUpon>FRMRegistrarProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRMRegistrarUsuario.resx">
+      <DependentUpon>FRMRegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMRegstrarEmpleado.resx">
       <DependentUpon>FRMRegstrarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRMListadoCompra.resx">
       <DependentUpon>FRMListadoCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMVistaEmpleado.resx">
+      <DependentUpon>FRMVistaEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
